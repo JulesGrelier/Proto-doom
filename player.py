@@ -1,14 +1,13 @@
-import pyglet
-from pyglet.math import Vec2
-
 from math import radians, cos, sin
 
-BLUE = [0, 0, 255]
+import pyglet
+from pyglet.window import key
+
 
 class Player() :
-    def __init__(self, pos : Vec2, orientation : int):
-        self.x = pos.x
-        self.y = pos.y
+    def __init__(self, x, y, orientation : int):
+        self.x = x
+        self.y = y
         self.orientation = orientation #in degree
 
     def increase_orientation(self, angle : int) :
@@ -30,3 +29,17 @@ class Player() :
         pyglet.shapes.Line(self.x, self.y, self.x + projection_left_x, self. y + projection_left_y).draw()
         pyglet.shapes.Line(self.x, self.y, self.x + projection_right_x, self. y + projection_right_y).draw()
     
+    def deals_with_keyboard_inputs(self, symbol : key):
+        if symbol == key.LEFT:
+            self.x -= 50
+        if symbol == key.RIGHT:
+            self.x += 50
+        if symbol == key.DOWN:
+            self.y -= 50
+        if symbol == key.UP:
+            self.y += 50
+
+        if symbol == key.A:
+            self.increase_orientation(-10)
+        if symbol == key.Z:
+            self.increase_orientation(10)
