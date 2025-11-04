@@ -1,5 +1,5 @@
-from pyglet.math import Vec2
 import pyglet
+from pyglet.math import Vec2
 
 class Wall():
     def __init__(self, pos1 : Vec2, pos2 : Vec2):

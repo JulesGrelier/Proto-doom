@@ -10,7 +10,7 @@ class Player() :
         self.y = y
         self.orientation = orientation #in degree
 
-    def increase_orientation(self, angle : int) :
+    def __increase_orientation(self, angle : int) :
         print(f"Angle : {self.orientation} -> {self.orientation + angle}")
         self.orientation += angle
 
@@ -40,6 +40,6 @@ class Player() :
             self.y += 50
 
         if symbol == key.A:
-            self.increase_orientation(-10)
+            self.__increase_orientation(-10)
         if symbol == key.Z:
-            self.increase_orientation(10)
+            self.__increase_orientation(10)
