@@ -22,13 +22,16 @@ class Simulation :
         for i in range(0, 5)]
         return walls
     
+
+
     def __return_rays(self) -> list[Ray]:
         orientation = self.player.orientation
 
-        rays = [ Ray(self.player.x, self.player.y, i) 
-                for i in range(orientation - 45, orientation + 45) ]
+        rays = [ Ray(self.player.x, self.player.y, orientation, i/2) 
+                for i in range(-45*2, 45*2) ]
         
         return rays
+
 
 
     def refresh_rays(self):
@@ -36,6 +39,8 @@ class Simulation :
 
         for ray in self.rays:
             ray.determine_intersection(self.walls)
+
+
 
     def draw_debug_window(self):
         self.player.draw()
@@ -45,6 +50,8 @@ class Simulation :
 
         for ray in self.rays:
             ray.draw()
+
+
 
     def draw_player_window(self):
         for ray in self.rays :

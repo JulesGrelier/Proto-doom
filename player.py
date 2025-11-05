@@ -30,16 +30,26 @@ class Player() :
         pyglet.shapes.Line(self.x, self.y, self.x + projection_right_x, self. y + projection_right_y).draw()
     
     def deals_with_keyboard_inputs(self, symbol : key):
+        orientation = False
+        
         if symbol == key.LEFT:
-            self.x -= 50
+            #self.x -= cos(radians(self.orientation)) * 50
+            orientation = self.orientation - 45
         if symbol == key.RIGHT:
-            self.x += 50
+            #self.x += cos(radians(self.orientation)) * 50
+            orientation = self.orientation + 45
         if symbol == key.DOWN:
-            self.y -= 50
+            #self.y -= cos(radians(self.orientation)) * 50
+            orientation = self.orientation + 180
         if symbol == key.UP:
-            self.y += 50
+            #self.y += cos(radians(self.orientation)) * 50
+            orientation = self.orientation
+
+        if orientation != False:
+            self.x += cos(radians(orientation)) * 50
+            self.y += cos(radians(orientation)) * 50
 
         if symbol == key.A:
-            self.__increase_orientation(-10)
-        if symbol == key.Z:
             self.__increase_orientation(10)
+        if symbol == key.Z:
+            self.__increase_orientation(-10)
