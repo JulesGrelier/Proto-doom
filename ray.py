@@ -30,7 +30,7 @@ class Ray():
         return Bx, By
     
 
-    
+
     def draw(self):
         if self.intersection != False:
             pyglet.shapes.Line(self.Ax, self.Ay, self.intersection.x, self.intersection.y, color=(0, 0, 255)).draw()
@@ -49,7 +49,7 @@ class Ray():
 
         y = 360 - height/2
 
-        brightness = max(255 - int(self.intersection.distance/2), 0)
+        brightness = max(255 - int(self.intersection.distance/3), 0)
         color = (brightness, brightness, brightness)
 
         pyglet.shapes.Rectangle(x, y, width, height, color).draw()

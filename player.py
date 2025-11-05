@@ -10,13 +10,18 @@ class Player() :
         self.y = y
         self.orientation = orientation #in degree
 
+
+
     def __increase_orientation(self, angle : int) :
         print(f"Angle : {self.orientation} -> {self.orientation + angle}")
         self.orientation += angle
 
+
+
     def draw(self):
         pyglet.shapes.Circle(self.x, self.y, 10, ).draw()
         self.__draw_view()
+
 
 
     def __draw_view(self) :
@@ -29,25 +34,23 @@ class Player() :
         pyglet.shapes.Line(self.x, self.y, self.x + projection_left_x, self. y + projection_left_y).draw()
         pyglet.shapes.Line(self.x, self.y, self.x + projection_right_x, self. y + projection_right_y).draw()
     
+
+
     def deals_with_keyboard_inputs(self, symbol : key):
         orientation = False
         
         if symbol == key.LEFT:
-            #self.x -= cos(radians(self.orientation)) * 50
-            orientation = self.orientation - 45
+            orientation = self.orientation + 90
         if symbol == key.RIGHT:
-            #self.x += cos(radians(self.orientation)) * 50
-            orientation = self.orientation + 45
+            orientation = self.orientation - 90
         if symbol == key.DOWN:
-            #self.y -= cos(radians(self.orientation)) * 50
             orientation = self.orientation + 180
         if symbol == key.UP:
-            #self.y += cos(radians(self.orientation)) * 50
             orientation = self.orientation
 
         if orientation != False:
             self.x += cos(radians(orientation)) * 50
-            self.y += cos(radians(orientation)) * 50
+            self.y += sin(radians(orientation)) * 50
 
         if symbol == key.A:
             self.__increase_orientation(10)
