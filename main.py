@@ -1,7 +1,7 @@
 import pyglet
-from simulation import Simulation
-
 from pyglet.window.mouse import LEFT
+
+from simulation import Simulation
 
 debug_window = pyglet.window.Window(1080, 720, "Debug window", None)
 player_window = pyglet.window.Window(1080, 720, "Player window", None)
@@ -14,8 +14,11 @@ def on_key_press(symbol, _):
 
 @debug_window.event
 def on_mouse_press(x, y, button, _):
-    if button == LEFT:
-        simulation.add_wall(x, y)
+    if button != LEFT:
+        return
+    if simulation.walls.add_wall(x, y):
+        simulation.refresh_rays()
+    
 
 @debug_window.event
 def on_draw() :

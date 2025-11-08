@@ -19,7 +19,7 @@ class Player() :
 
 
     def draw(self):
-        pyglet.shapes.Circle(self.x, self.y, 10, ).draw()
+        pyglet.shapes.Circle(self.x, self.y, 10).draw()
         self.__draw_view()
 
 
@@ -37,7 +37,7 @@ class Player() :
 
 
     def deals_with_keyboard_inputs(self, symbol : key):
-        orientation = False
+        orientation = "a"
         
         if symbol == key.LEFT:
             orientation = self.orientation + 90
@@ -48,11 +48,11 @@ class Player() :
         if symbol == key.UP:
             orientation = self.orientation
 
-        if orientation != False:
-            self.x += cos(radians(orientation)) * 50
-            self.y += sin(radians(orientation)) * 50
+        if orientation != "a":
+            self.x += cos(radians(orientation)) * 20
+            self.y += sin(radians(orientation)) * 20
 
         if symbol == key.A:
-            self.__increase_orientation(10)
+            self.__increase_orientation(5)
         if symbol == key.Z:
-            self.__increase_orientation(-10)
+            self.__increase_orientation(-5)
