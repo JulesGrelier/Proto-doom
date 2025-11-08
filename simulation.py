@@ -9,6 +9,7 @@ class Simulation :
         self.player = self.__return_player()
         self.walls = self.__return_walls()
         self.rays = self.__return_rays()
+        self.first_wall_coordinate = False
 
     def __return_player(self) -> Player:
         return Player(500, 500, 0)
@@ -56,3 +57,11 @@ class Simulation :
     def draw_player_window(self):
         for ray in self.rays :
             ray.draw_player_window()
+
+
+    def add_wall(self, x, y):
+        if self.first_wall_coordinate == False:
+            self.first_wall_coordinate = Vec2(x, y)
+        else:
+            self.walls.append(Wall(self.first_wall_coordinate, Vec2(x, y)))
+            self.first_wall_coordinate = False
