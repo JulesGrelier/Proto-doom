@@ -1,2 +1,0 @@
-crée mur comme on veut
-sup vec2
